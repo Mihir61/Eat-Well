@@ -1,0 +1,23 @@
+﻿@model IEnumerable<EatWell.Models.FoodItem>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(x => x.Name)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@Html.DisplayFor(x =>item.Name)</th>
+            </tr>
+        }
+    </tbody>
+</table>
+
