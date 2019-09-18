@@ -14,8 +14,13 @@ namespace EatWell.Models
         [Display(Name ="Menu Name")]
         public string Name { get; set; }
         [Display(Name = "Menu Details")]
+        [MaxLength(500)]
         public string Details { get; set; }
         [Required]
+        [Display(Name = "Menu Price")]
         public double Price { get; set; }
+        public virtual ICollection<MenuItems> MenuItemCollection { get; set; }
+
+   
     }
 }

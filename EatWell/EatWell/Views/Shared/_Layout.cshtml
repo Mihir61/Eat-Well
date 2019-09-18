@@ -16,53 +16,64 @@
 </head>
 
 <body>
-  <!--banner-->
-  <section id="banner">
-    <div class="bg-color">
-     @Html.Partial("_headerPartial")
-      <div class="container">
-        <div class="row">
-          <div class="inner text-center">
-            <h1 class="logo-name">Eat-Well</h1>
-            <h2>Food To fit your lifestyle & health.</h2>
-            <p>Specialized in Indian Cuisine!!</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- / banner -->
- @RenderBody()
- 
-  <!-- footer -->
-  <footer class="footer text-center">
-    <div class="footer-top">
-      <div class="row">
-        <div class="col-md-offset-3 col-md-6 text-center">
-          <div class="widget">
-            <h4 class="widget-title">Eat-Well</h4>
-            <address>324 Ellte Road<br>Delhi, DL 110013</address>
-            <div class="social-list">
-              <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-              <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-            </div>
-            <p class="copyright clear-float">
-                ©Eat-Well Theme. All Rights Reserved
-                <div class="credits">
-                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    <!--banner-->
+    <section id="banner">
+        <div class="bg-color">
+            @Html.Partial("_headerPartial")
+            <div class="container">
+                <div class="row">
+                    <div class="inner text-center">
+                        <h1 class="logo-name">Eat-Well</h1>
+                        <h2>Food To fit your lifestyle & health.</h2>
+                        <p>Specialized in Indian Cuisine!!</p>
+                    </div>
                 </div>
-            </p>
-          </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </footer>
-  <!-- / footer -->
+    </section>
+    <!-- / banner -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="row">
+               
+                <div class="col-md-12">
+                    @RenderBody()
+                </div>
+              
+            </div>
+        </div>
+    </section>
+  
 
-  <script src="~/Scripts/jquery.min.js"></script>
-  <script src="~/Scripts/jquery.easing.min.js"></script>
-  <script src="~/Scripts/bootstrap.min.js"></script>
-  <script src="~/Scripts/custom.js"></script>
+    <!-- footer -->
+    <footer class="footer text-center">
+        <div class="footer-top">
+            <div class="row">
+                <div class="col-md-offset-3 col-md-6 text-center">
+                    <div class="widget">
+                        <h4 class="widget-title">Eat-Well</h4>
+                        <address>324 Ellte Road<br>Delhi, DL 110013</address>
+                        <div class="social-list">
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </div>
+                        <p class="copyright clear-float">
+                            ©Eat-Well Theme. All Rights Reserved
+                            <div class="credits">
+                                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                            </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- / footer -->
+
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.easing.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/custom.js"></script>
 
 
 </body>

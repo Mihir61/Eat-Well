@@ -1,23 +1,110 @@
-﻿@model IEnumerable<EatWell.Models.FoodItem>
+﻿@*@model IEnumerable<EatWell.Models.FoodItem>*@
+@using EatWell.Models
+@model PagedList.IPagedList<EatWell.Models.FoodItem>
+
+@using PagedList.Mvc
+
+
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-<table class="table">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(x => x.Name)</th>
-        </tr>
-    </thead>
-    <tbody>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <button type="button" class="btn btn-success glyphicon glyphicon-plus " data-toggle="modal" data-target="#mymodal" style="margin-bottom:12px">Add New Item</button>
+    </div>
+</div>
+<div class="modal fade" id="mymodal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Add New Item</h3>
+                <a href="#" class="close top-left" data-dismiss="modal">&times;</a>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    @{
+                        var itemModel = new FoodItem();
+
+                    }
+                    @Html.Partial("_AddPartial", itemModel)
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+<div class="row">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    @Html.ActionLink("Item Name", "Index",new { sortOrder = "Name", CurrentSort = ViewBag.CurrentSort })
+                </th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
         @foreach (var item in Model)
         {
             <tr>
-                <th>@Html.DisplayFor(x =>item.Name)</th>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td class="text-center">
+                    <a href="#" class="btn btn-info" onclick="ConfirmEdit(@item.ItemId)"><i class="glyphicon glyphicon-edit"></i></a>
+                    <a href="#ConfirmDelete" class="btn btn-danger" onclick="ConfirmDelete(@item.ItemId)"><i class="glyphicon glyphicon-trash"></i></a>
+                </td>
             </tr>
         }
-    </tbody>
-</table>
+    </table>
+</div>
+<div id='Paging' style="text-align:center">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+    of @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>
 
+
+
+
+@*<script>
+        $(document).ready(function () {
+            $("#ConfirmDelete").click(function () {
+
+                var parent = $(this).parent('td').parent('tr');
+                $.ajax({
+                    type: 'Post',
+                    url: '/FoodItem/Delete',
+                    data: { id: 3 },
+                    ajaxasync: true,
+                    success: function () {
+                        parent.remove();
+                        alert("success");
+                    },
+                    error: function () {
+                        alert("failed");
+                    }
+
+
+                });
+
+            });
+        });
+    </script>*@

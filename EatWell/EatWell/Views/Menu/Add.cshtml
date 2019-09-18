@@ -1,0 +1,89 @@
+﻿@model EatWell.Models.MenuModel
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="text-center ">Menu</h4>
+            <hr />
+        </div>
+    </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-5" })
+                    <div class="col-md-7">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Details, htmlAttributes: new { @class = "control-label col-md-5" })
+                    <div class="col-md-7">
+                        @Html.EditorFor(model => model.Details, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-5" })
+                    <div class="col-md-7">
+                        @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <hr />
+                    <table class="table table-bordered">
+                        <tr>
+                            <td colspan="3" class="alert-success text-center">Food Items</td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">#</th>
+                            <th class="text-center">Item Name</th>
+                            <th class="text-center">Qty</th>
+                        </tr>
+                        @{
+                            int rowC = 0;
+                            foreach (var item in Model.FoodItems)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.HiddenFor(model => model.SelectItems[rowC].ItemId, new { @Value = item.ItemId })
+                                        @Html.EditorFor(model => model.SelectItems[rowC].IsSelect)
+                                    </td>
+                                    <td>
+                                        @item.Name
+                                    </td>
+                                    <td>
+                                        @Html.EditorFor(model => model.SelectItems[rowC].Qty)
+                                    </td>
+                                </tr>
+                                rowC++;
+                            }
+                        }
+                    </table>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-5 col-md-7">
+                    <input type="submit" value="Submit" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

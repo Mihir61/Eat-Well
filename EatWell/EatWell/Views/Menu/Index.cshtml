@@ -1,0 +1,62 @@
+﻿@model IEnumerable<EatWell.Models.Menu>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<br />
+<div class="row">
+    <div class="col-md-12">
+        
+        <button type="button" class="btn btn-success glyphicon glyphicon-plus" style="margin-bottom:12px">@Html.ActionLink("Add New Menu","Add","Menu")</button>
+    </div>
+</div>
+<div class="row">
+    <table class=" table table-bordered ">
+        <thead>
+            <tr>
+                <th class="text-center col-md-3">Menu Name</th>
+
+                <th class="text-center col-md-3">Menu Details</th>
+
+                <th class="text-center col-md-2">Menu Price</th>
+                <th class="text-center col-md-2"> Items</th>
+
+                <th class="text-center col-md-2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Details)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @foreach (var menuItem in item.MenuItemCollection)
+                        {
+                            <span class="label label-success">@menuItem.FoodItem.Name - @menuItem.Quantity</span>
+                        }
+                    </td>
+                    <td class="text-center">
+                        <a href="#" class="btn btn-info" onclick="ConfirmEdit"><i class="glyphicon glyphicon-edit"></i></a>
+                        <a href="#" class="btn btn-danger" onclick="ConfirmDelete"><i class="glyphicon glyphicon-trash"></i></a>
+                        <a href="#" class="btn btn-primary" onclick="ShowDetails"><i class="glyphicon glyphicon-list-alt"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+
