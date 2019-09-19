@@ -16,7 +16,7 @@ namespace EatWell
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "FoodItem", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "WeeklyMenu", action = "Add", id = UrlParameter.Optional }
             );
         }
     }

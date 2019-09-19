@@ -12,11 +12,13 @@ namespace EatWell.Models
         private EatWellContext _context;
         public List<SelectItem> SelectItems { get; set; }
         public List<FoodItem> FoodItems { get; set; }
+        
 
         public MenuModel()
         {
             _context = new EatWellContext();
             FoodItems = _context.foodItems.ToList();
+            
         }
     }
     [NotMapped]

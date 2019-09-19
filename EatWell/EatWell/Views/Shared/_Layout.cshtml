@@ -35,15 +35,15 @@
     <section id="about" class="section-padding">
         <div class="container">
             <div class="row">
-               
+
                 <div class="col-md-12">
                     @RenderBody()
                 </div>
-              
+
             </div>
         </div>
     </section>
-  
+
 
     <!-- footer -->
     <footer class="footer text-center">
@@ -74,7 +74,7 @@
     <script src="~/Scripts/jquery.easing.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/custom.js"></script>
-
+    @RenderSection("scripts", required: false)
 
 </body>
 

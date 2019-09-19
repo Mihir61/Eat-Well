@@ -50,5 +50,10 @@ namespace EatWell.Controllers
             return RedirectToAction("Index");
 
         }
+        public JsonResult GetMenuPriceById(int id)
+        {
+            var product = context.menus.Find(id);
+            return Json(new { Price = product.Price,items = product.MenuItemCollection.Select(x=>x.FoodItem.Name) });
+        }
     }
 }

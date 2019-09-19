@@ -158,6 +158,7 @@
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\MenuItems.cs" />
     <Compile Include="Models\WeeklyMenu.cs" />
+    <Compile Include="Models\WeeklyMenuModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -267,8 +268,8 @@
     <Content Include="Views\FoodItem\Add.cshtml" />
     <Content Include="Views\Menu\Index.cshtml" />
     <Content Include="Views\Menu\Add.cshtml" />
-    <Content Include="Views\WeeklyMenu\Add.cshtml" />
     <Content Include="Views\FoodItem\_AddPartial.cshtml" />
+    <Content Include="Views\WeeklyMenu\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
