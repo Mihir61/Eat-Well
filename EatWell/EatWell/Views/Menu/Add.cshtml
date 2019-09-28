@@ -66,7 +66,7 @@
                                         @item.Name
                                     </td>
                                     <td>
-                                        @Html.EditorFor(model => model.SelectItems[rowC].Qty)
+                                        @Html.TextBoxFor(model => model.SelectItems[rowC].Qty, new { @Value = 1 })
                                     </td>
                                 </tr>
                                 rowC++;

@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "Calender";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/mini-event-calendar.min.css" rel="stylesheet" />
+
+<div class="text-center" style="background-color:#3d414a;">
+    <h1 style="text-decoration-color:black">Menu Calendar</h1>
+</div>
+
+<div id="calendarModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+                <h4 id="modalTitle" class="modal-title"></h4>
+            </div>
+            <div id="modalBody" class="modal-body"> </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="calendar" class="center-block" style="width: 60%;"></div>
+<br>
+@section scripts {
+
+    <script src="~/Scripts/mini-event-calendar.js"></script>
+    <script>
+        var url = '@Url.Action("GetMenuByDate","WeeklyMenu")';
+        var curl = '@Url.Action("Index","WeeklyMenu")';
+        var db_events = [];
+        assignToday();
+
+        function assignToday() {
+            $.ajax({
+                type: "POST",
+                url: url,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify({ dt: new Date() }),
+                success: function (response) {
+                    var date = new Date();        
+                    db_events.push({
+                        title: response.menuName,
+                        date: date.getTime(),
+                        link: curl
+                    })
+                    $("#calendar").MEC({
+                        calendar_link: curl,
+                        events: db_events
+                    });
+
+                },
+                error: function (response) {
+                    alert('Error');
+                }
+            })
+                }
+
+
+    </script>
+}
+
+

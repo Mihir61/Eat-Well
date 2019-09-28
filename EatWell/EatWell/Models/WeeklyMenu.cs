@@ -13,8 +13,7 @@ namespace EatWell.Models
         [Key]
         public int Id { get; set; }
         public DayOfWeek DayName { get; set; }
-        public int Date { get; set; }
-
+        
         public int MenuId { get; set; }
         [ForeignKey("MenuId")]
         public virtual Menu Menu { get; set; }

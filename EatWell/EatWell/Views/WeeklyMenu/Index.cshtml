@@ -1,0 +1,47 @@
+﻿@model IEnumerable<EatWell.Models.WeeklyMenu>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">Index</h2>
+<div class="table">
+    <table class="table table-bordered">
+        <tr class="alert-info center-text">
+            <th>Date</th>
+            <th>Week Day</th>
+            <th>Menu</th>
+        </tr>
+
+
+        @{
+
+            DateTime dt = new DateTime();
+
+            dt = DateTime.Now;
+            DateTime Days = new DateTime(dt.Year, dt.Month, DateTime.DaysInMonth(dt.Year, dt.Month));
+            for (DateTime dt1 = new DateTime(dt.Year, dt.Month, 1); dt1 <= Days; dt1 = dt1.AddDays(1))
+            {
+
+
+                <tr class="alert-info">
+
+                    <td class="text-center">Sep-@dt1.Day</td>
+                    <td class="text-center">@dt1.DayOfWeek</td>
+                    @if (Model.Any(x => x.DayName == dt1.DayOfWeek))
+                    {
+                        <td class="text-center">
+                            @Model.Where(x => x.DayName == dt1.DayOfWeek).FirstOrDefault().Menu.Name
+                        </td>
+                    }
+                </tr>
+
+            }
+
+        }
+
+    </table>
+
+</div>
+

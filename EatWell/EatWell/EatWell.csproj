@@ -168,9 +168,13 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\dncalendar-skin.css" />
+    <Content Include="Content\dncalendar-skin.min.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\imagehover.min.css" />
     <Content Include="Content\Images\image1.png" />
+    <Content Include="Content\mini-event-calendar.css" />
+    <Content Include="Content\mini-event-calendar.min.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -231,6 +235,8 @@
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="Scripts\custom.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\dncalendar.js" />
+    <Content Include="Scripts\dncalendar.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -248,6 +254,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\mini-event-calendar.js" />
+    <Content Include="Scripts\mini-event-calendar.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -270,6 +278,8 @@
     <Content Include="Views\Menu\Add.cshtml" />
     <Content Include="Views\FoodItem\_AddPartial.cshtml" />
     <Content Include="Views\WeeklyMenu\Add.cshtml" />
+    <Content Include="Views\WeeklyMenu\Index.cshtml" />
+    <Content Include="Views\WeeklyMenu\Calender.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -153,7 +153,6 @@ F:\Eat-Well\EatWell\EatWell\bin\System.Web.WebPages.Razor.xml
 F:\Eat-Well\EatWell\EatWell\bin\Newtonsoft.Json.xml
 F:\Eat-Well\EatWell\EatWell\bin\Antlr3.Runtime.pdb
 F:\Eat-Well\EatWell\EatWell\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-F:\Eat-Well\EatWell\EatWell\obj\Debug\EatWell.csprojAssemblyReference.cache
 F:\Eat-Well\EatWell\EatWell\obj\Debug\EatWell.csproj.CoreCompileInputs.cache
 F:\Eat-Well\EatWell\EatWell\obj\Debug\EatWell.csproj.CopyComplete
 F:\Eat-Well\EatWell\EatWell\obj\Debug\EatWell.dll
@@ -166,3 +165,4 @@ F:\Eat-Well\EatWell\EatWell\bin\PagedList.dll
 F:\Eat-Well\EatWell\EatWell\bin\PagedList.xml
 F:\Eat-Well\EatWell\EatWell\bin\PagedList.Mvc.dll
 F:\Eat-Well\EatWell\EatWell\bin\PagedList.Mvc.xml
+F:\Eat-Well\EatWell\EatWell\obj\Debug\EatWell.csprojAssemblyReference.cache

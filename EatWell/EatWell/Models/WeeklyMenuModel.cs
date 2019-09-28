@@ -17,6 +17,8 @@ namespace EatWell.Models
         {
             _context = new EatWellContext();
             Menus = _context.menus.ToList();
+            //WeeklyMenuList = _context.weeklyMenus.ToList();
+            
         }
     }
 }

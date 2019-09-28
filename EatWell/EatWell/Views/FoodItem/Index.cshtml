@@ -81,30 +81,3 @@
     @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 </div>
 
-
-
-
-@*<script>
-        $(document).ready(function () {
-            $("#ConfirmDelete").click(function () {
-
-                var parent = $(this).parent('td').parent('tr');
-                $.ajax({
-                    type: 'Post',
-                    url: '/FoodItem/Delete',
-                    data: { id: 3 },
-                    ajaxasync: true,
-                    success: function () {
-                        parent.remove();
-                        alert("success");
-                    },
-                    error: function () {
-                        alert("failed");
-                    }
-
-
-                });
-
-            });
-        });
-    </script>*@

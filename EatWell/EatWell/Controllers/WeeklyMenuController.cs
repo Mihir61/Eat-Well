@@ -13,7 +13,7 @@ namespace EatWell.Controllers
         // GET: WeeklyMenu
         public ActionResult Index()
         {
-            var days = DateTime.DaysInMonth(2019,09);
+
             List<WeeklyMenu> weeklymenu = context.weeklyMenus.ToList();
             return View(weeklymenu);
         }
@@ -22,22 +22,41 @@ namespace EatWell.Controllers
             return View(new WeeklyMenuModel());
         }
         [HttpPost]
-        public ActionResult Add(WeeklyMenu weeklyMenu)
+        [ValidateAntiForgeryToken]
+        public ActionResult Add(WeeklyMenuModel model)
         {
-            //////var day = DateTime.DaysInMonth(2019, 09);
-            
-            var weeklymenu = new WeeklyMenu
+
+            foreach (var item in model.WeeklyMenuList)
             {
-                DayName = weeklyMenu.DayName,
-                MenuId = weeklyMenu.MenuId,
 
-            };
+                var WeeklyMenuENtry = new WeeklyMenu()
+                {
+                    DayName = item.DayName,
+                    MenuId = item.MenuId
+                };
 
-            context.weeklyMenus.Add(weeklyMenu);
-            context.SaveChanges();
+                
+                context.weeklyMenus.Add(WeeklyMenuENtry);
+                context.SaveChanges();
+               
+            }
 
-
-            return View(weeklyMenu);
+            return RedirectToAction("Index");
         }
+
+        public ActionResult Calender()
+        {
+           
+            return View();
+        }
+        
+        public JsonResult GetMenuByDate(string dt)
+        {
+            var date = Convert.ToDateTime(dt);
+            var menu = context.weeklyMenus.FirstOrDefault(s => s.DayName == date.DayOfWeek);
+            return Json(new { menuName = menu.Menu.Name, items =menu.Menu.MenuItemCollection.Select(x=>x.FoodItem.Name) });
+        }
+
+       
     }
 }

@@ -14,39 +14,46 @@
         <h4 class="text-center">WeeklyMenu</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="col-md-12">
-            <table class="table table-bordered">
-                <tr>
-                    <th class="text-center">Day</th>
-                    <th class="text-center">Menu</th>
-                    <th class="text-center">Items</th>
-                    <th class="text-center">Price</th>
-                </tr>
-                @for (int i = 0; i < 7; i++)
-                {
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered">
                     <tr>
-                        <td>
-                            @Enum.GetName(typeof(DayOfWeek), i)
-                            @Html.HiddenFor(model => model.WeeklyMenuList[i].DayName, new { @Value = i })
-
-                        </td>
-                        <td>
-                            @Html.DropDownListFor(model => model.WeeklyMenuList[i].MenuId, new SelectList(Model.Menus, "MenuId", "Name"), "Select Menu...",
-                           new { @class = "form-control", @onchange = "ItemsLoad(this)" })
-                        </td>
-                        <td class="item"></td>
-                        <td>
-                            @Html.TextBox("Price", null, new { @class = "form-control", @readonly = "readonly" })
-                        </td>
-
+                        <th class="text-center">Day</th>
+                        <th class="text-center">Menu</th>
+                        <th class="text-center">Items</th>
+                        <th class="text-center">Price</th>
+                        <th class="text-center">Actions</th>
                     </tr>
-                }
-
-            </table>
+                    <tbody id="tableRow">
+                        <tr>
+                            <td>
+                                @Html.DropDownListFor(model => model.WeeklyMenuList[0].DayName, EnumHelper.GetSelectList(typeof(DayOfWeek)), "Select Day", new { @class = "form-control" })
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(model => model.WeeklyMenuList[0].MenuId, new SelectList(Model.Menus, "MenuId", "Name"), "Select Menu...",
+                               new { @class = "form-control", @onchange = "ItemsLoad(this)" })
+                            </td>
+                            <td class="item"></td>
+                            <td>
+                                @Html.TextBox("Price", null, new { @class = "form-control", @readonly = "readonly" })
+                            </td>
+                            
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>
+                                <a onclick="AddNewRowFunc()" class="btn btn-success"><i class="glyphicon glyphicon-plus-sign"></i></a>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
         </div>
+
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Submit" class="btn btn-default" />
+            <div class="col-md-offset-5 col-md-7">
+                <input type="submit" value="Submit" class="btn btn-default " />
             </div>
         </div>
     </div>
@@ -76,13 +83,11 @@
                         $(obj).closest('tr').find('input[name="Price"]').val(response.Price);
 
                         var item = '';
-
                         $(response.items).each(function ()
                         {
-                            item += '<span class="fa fa-arrow-right"> '+this+'</span>'
-
+                            item += '<span class="fa fa-caret-right"> ' + this + '</span>'
                         })
-                        $(obj).closest('tr').find('[class="item"]').html(item);
+                        $(obj).closest('tr').find('[class="item"]').html(item)
 
                     },
                     error: function (response) {
@@ -91,7 +96,58 @@
                 });
              }
 
-         }
+            }
+     function AddNewRowFunc()
+    {
+        var countTr = $("#tableRow").find('tr').length;
+         $('#tableRow').append(
+             '<tr>' +
+             '<td><select class="form-control" data-val="true" data-val-required="The DayName field is required." id="WeeklyMenuList_' + countTr + '__DayName" name="WeeklyMenuList[' + countTr +'].DayName"><option value="">Select Day</option>' +  
+             '<option value="0">Sunday</option>' +
+             '<option value="1">Monday</option>' +
+             '<option value="2">Tuesday</option>' +
+             '<option value="3">Wednesday</option>' +
+             '<option value="4">Thursday</option>' +
+             '<option value="5">Friday</option>' +
+             '<option value="6">Saturday</option></select>'+
+             '</td > ' +
+             '<td><select class="form-control" data-val="true" data-val-number="The field MenuId must be a number." data-val-required="The MenuId field is required." id="WeeklyMenuList_' + countTr + '__MenuId" name="WeeklyMenuList[' + countTr + '].MenuId" onchange="ItemsLoad(this)"><option value="">Select Menu...</option>' +
+             '<option value="10">Set Menu -1(Chinese) </option>' +
+             '<option value="11">Set Menu -2(Chinese) </option>' +
+             '<option value="12">Indian Biriyani Pack</option>' +
+             '<option value="13">kacchi Pack</option>' +
+             '<option value="14">Set Menu -3(Indian) </option>' +
+             '<option value="15">Set Menu -4(Indian) </option>' +
+             '<option value="16">Set Menu -5(Indian) </option></select></td>' +
+             '<td class="item"></td>' +
+             '<td><input class="form-control" id="Price" name="Price" readonly="readonly" type="text" value="" /></td>' +
+             '<td><a onclick="DeleteRowFunc(this)" class="btn btn-danger"><i class="glyphicon glyphicon-remove-sign"></i></a>' +
+             '</td>' +
+             '</tr>');
+
+    }
+     function DeleteRowFunc(obj)
+    {
+        $(obj).closest('tr').remove();
+
+
+    }
+
+
+         //$(document).ready(function(){
+
+         //    $(".row").click(function(){
+
+         //        var name = $("#name").val();
+
+         //        var subject = $("#subject").val();
+
+         //        var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + name + "</td><td>" + subject + "</td></tr>";
+
+         //        $("table tbody").append(markup);
+
+         //    });
+         //});
 
     </script>
 
