@@ -49,12 +49,18 @@ namespace EatWell.Controllers
            
             return View();
         }
-        
+
+        public ActionResult Table()
+        {
+
+            return View();
+        }
+
         public JsonResult GetMenuByDate(string dt)
         {
             var date = Convert.ToDateTime(dt);
-            var menu = context.weeklyMenus.FirstOrDefault(s => s.DayName == date.DayOfWeek);
-            return Json(new { menuName = menu.Menu.Name, items =menu.Menu.MenuItemCollection.Select(x=>x.FoodItem.Name) });
+            var menus = context.weeklyMenus.Where(s => s.DayName == date.DayOfWeek);
+            return Json(menus.Select(x=>new {menuName = x.Menu.Name,items=x.Menu.MenuItemCollection.Select(s=>s.FoodItem.Name) }));
         }
 
        

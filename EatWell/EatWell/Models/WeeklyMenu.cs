@@ -18,8 +18,5 @@ namespace EatWell.Models
         [ForeignKey("MenuId")]
         public virtual Menu Menu { get; set; }
 
-        
-
-        
     }
 }

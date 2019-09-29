@@ -151,6 +151,14 @@
     <Compile Include="Migrations\201909170905371_migForP7.Designer.cs">
       <DependentUpon>201909170905371_migForP7.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909290510428_update.cs" />
+    <Compile Include="Migrations\201909290510428_update.Designer.cs">
+      <DependentUpon>201909290510428_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909291127522_update9.cs" />
+    <Compile Include="Migrations\201909291127522_update9.Designer.cs">
+      <DependentUpon>201909291127522_update9.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EatWellContext.cs" />
     <Compile Include="Models\FoodItem.cs" />
@@ -280,6 +288,7 @@
     <Content Include="Views\WeeklyMenu\Add.cshtml" />
     <Content Include="Views\WeeklyMenu\Index.cshtml" />
     <Content Include="Views\WeeklyMenu\Calender.cshtml" />
+    <Content Include="Views\WeeklyMenu\Table.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -305,6 +314,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909170905371_migForP7.resx">
       <DependentUpon>201909170905371_migForP7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909290510428_update.resx">
+      <DependentUpon>201909290510428_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909291127522_update9.resx">
+      <DependentUpon>201909291127522_update9.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

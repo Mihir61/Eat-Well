@@ -166,3 +166,5 @@ F:\Eat-Well\EatWell\EatWell\bin\PagedList.xml
 F:\Eat-Well\EatWell\EatWell\bin\PagedList.Mvc.dll
 F:\Eat-Well\EatWell\EatWell\bin\PagedList.Mvc.xml
 F:\Eat-Well\EatWell\EatWell\obj\Debug\EatWell.csprojAssemblyReference.cache
+F:\Eat-Well\EatWell\EatWell\obj\Debug\EatWell.Migrations.update.resources
+F:\Eat-Well\EatWell\EatWell\obj\Debug\EatWell.Migrations.update9.resources
